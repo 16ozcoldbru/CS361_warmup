@@ -6,6 +6,20 @@
 # Description: An exploration of microservices
 
 import random, time
+
 while True:
-    time.sleep(3)
-    print(random.randint(1, 10))
+    """Checks for 'run' string in 'prng-service.txt' file and replaces it 
+    with a random integer
+    """
+    time.sleep(1)
+
+    prng_file = open("prng-service.txt", "r")
+    line = prng_file.readline()
+    prng_file.close()
+    if line == "run":
+        prng_file = open("prng-service.txt", "w")
+        prng_file.writelines(str(random.randint(1, 10)))
+        prng_file.close()
+
+
+
